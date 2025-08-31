@@ -31,7 +31,7 @@ public class jFramePrincipal extends javax.swing.JFrame {
         jdEscritorio = new javax.swing.JDesktopPane();
         jBarraPrincipal = new javax.swing.JMenuBar();
         jAlumno = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        jmAgregarAlum = new javax.swing.JMenuItem();
         jMateria = new javax.swing.JMenu();
         jRegistro = new javax.swing.JMenu();
         jSalir = new javax.swing.JMenu();
@@ -51,8 +51,18 @@ public class jFramePrincipal extends javax.swing.JFrame {
 
         jAlumno.setText("Alumno");
 
-        jMenu5.setText("Agregar Alumno");
-        jAlumno.add(jMenu5);
+        jmAgregarAlum.setText("jMenuItem1");
+        jmAgregarAlum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmAgregarAlumMouseClicked(evt);
+            }
+        });
+        jmAgregarAlum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAgregarAlumActionPerformed(evt);
+            }
+        });
+        jAlumno.add(jmAgregarAlum);
 
         jBarraPrincipal.add(jAlumno);
 
@@ -80,6 +90,21 @@ public class jFramePrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmAgregarAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAgregarAlumActionPerformed
+        // TODO add your handling code here:
+        JinternalFrame agregar = new JinternalFrame();
+        agregar.setSize(450, 350);
+        agregar.setVisible(true);
+        jdEscritorio.add(agregar);
+    }//GEN-LAST:event_jmAgregarAlumActionPerformed
+
+    private void jmAgregarAlumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmAgregarAlumMouseClicked
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_jmAgregarAlumMouseClicked
 
     /**
      * @param args the command line arguments
@@ -122,9 +147,9 @@ public class jFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jAlumno;
     private javax.swing.JMenuBar jBarraPrincipal;
     private javax.swing.JMenu jMateria;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jRegistro;
     private javax.swing.JMenu jSalir;
     private javax.swing.JDesktopPane jdEscritorio;
+    private javax.swing.JMenuItem jmAgregarAlum;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,11 +9,15 @@
             <Property name="text" type="java.lang.String" value="Alumno"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu5">
+            <MenuItem class="javax.swing.JMenuItem" name="jmAgregarAlum">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar Alumno"/>
+                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
               </Properties>
-            </Menu>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmAgregarAlumMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmAgregarAlumActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMateria">
