@@ -169,7 +169,7 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         String apellido = jTApellido.getText();
         String nombre = jTNombre.getText();
         
-        //ME ASEGURO Q NO ESTEN EN BLANCO
+        //ME ASEGURO Q NO ESTEN EN BLANCO 
         
         
         if(apellido.isEmpty()||nombre.isEmpty()){

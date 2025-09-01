@@ -1,3 +1,9 @@
+
+import Clases.Materia;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +15,9 @@
  * @author Usuario
  */
 public class FormularioMateria extends javax.swing.JInternalFrame {
-
+    
+    public static final Set<Materia>materias = new HashSet<>();
+        
     /**
      * Creates new form FormularioMateria
      */
@@ -31,12 +39,12 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        JtCodigo = new javax.swing.JTextField();
+        JtNombre = new javax.swing.JTextField();
+        JtAño = new javax.swing.JTextField();
+        Jbguardar = new javax.swing.JButton();
+        Jbnuevo = new javax.swing.JButton();
+        Jbsalir = new javax.swing.JButton();
 
         jLabel1.setForeground(new java.awt.Color(0, 153, 204));
         jLabel1.setText("Formulario de Materia.");
@@ -50,25 +58,29 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(0, 153, 204));
         jLabel4.setText("Año al que pertenece:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Jbguardar.setForeground(new java.awt.Color(0, 153, 204));
+        Jbguardar.setText("Guardar");
+        Jbguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                JbguardarActionPerformed(evt);
             }
         });
 
-        jButton1.setForeground(new java.awt.Color(0, 153, 204));
-        jButton1.setText("Guardar");
-
-        jButton2.setForeground(new java.awt.Color(0, 153, 204));
-        jButton2.setText("Nuevo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Jbnuevo.setForeground(new java.awt.Color(0, 153, 204));
+        Jbnuevo.setText("Nuevo");
+        Jbnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                JbnuevoActionPerformed(evt);
             }
         });
 
-        jButton3.setForeground(new java.awt.Color(0, 153, 204));
-        jButton3.setText("Salir");
+        Jbsalir.setForeground(new java.awt.Color(0, 153, 204));
+        Jbsalir.setText("Salir");
+        Jbsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -84,20 +96,20 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(72, 72, 72)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(JtCodigo)
+                            .addComponent(JtNombre)
+                            .addComponent(JtAño, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 40, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(Jbguardar)
                 .addGap(33, 33, 33)
-                .addComponent(jButton2)
+                .addComponent(Jbnuevo)
                 .addGap(47, 47, 47)
-                .addComponent(jButton3)
+                .addComponent(Jbsalir)
                 .addGap(77, 77, 77))
         );
         jPanel1Layout.setVerticalGroup(
@@ -108,20 +120,20 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                 .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JtAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(Jbsalir)
+                    .addComponent(Jbnuevo)
+                    .addComponent(Jbguardar))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -141,26 +153,56 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void JbnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbnuevoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        JtCodigo.setText("");
+        JtAño.setText("");
+        JtNombre.setText("");
+    }//GEN-LAST:event_JbnuevoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void JbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbsalirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_JbsalirActionPerformed
 
+    private void JbguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbguardarActionPerformed
+        // TODO add your handling code here:
+     try {   
+       int codigo = Integer.parseInt(JtCodigo.getText());
+       String nombre = JtNombre.getText();
+       int anio = Integer.parseInt(JtAño.getText());
+       
+       
+      if (nombre.isEmpty()) {
+          JOptionPane.showMessageDialog(this, "El nombre no puede estar vacio", "Validación", JOptionPane.WARNING_MESSAGE);
+            return;
+      }
+      Materia matilda = new Materia (codigo, nombre, anio);
+      
+       if(!materias.add(matilda)){
+            JOptionPane.showMessageDialog(this, "Ya existe una materia con ese codigo", "Duplicado",JOptionPane.WARNING_MESSAGE);
+       
+            return;
+       }
+       JOptionPane.showMessageDialog(this, "Materia " + nombre + " de codigo " + codigo + "  .Guardado Correctamente");
+     }catch (NumberFormatException e){
+         JOptionPane.showMessageDialog(this, "Debe ingresar un caracter numerico en codigo y año", "Error", JOptionPane.ERROR_MESSAGE);
+         
+     }
+    }//GEN-LAST:event_JbguardarActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton Jbguardar;
+    private javax.swing.JButton Jbnuevo;
+    private javax.swing.JButton Jbsalir;
+    private javax.swing.JTextField JtAño;
+    private javax.swing.JTextField JtCodigo;
+    private javax.swing.JTextField JtNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
