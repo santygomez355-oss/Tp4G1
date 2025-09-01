@@ -51,7 +51,7 @@ public class jFramePrincipal extends javax.swing.JFrame {
 
         jAlumno.setText("Alumno");
 
-        jmAgregarAlum.setText("jMenuItem1");
+        jmAgregarAlum.setText("Formulario de Alumnos");
         jmAgregarAlum.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmAgregarAlumMouseClicked(evt);
