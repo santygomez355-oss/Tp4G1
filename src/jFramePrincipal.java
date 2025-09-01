@@ -33,6 +33,7 @@ public class jFramePrincipal extends javax.swing.JFrame {
         jAlumno = new javax.swing.JMenu();
         jmAgregarAlum = new javax.swing.JMenuItem();
         jMateria = new javax.swing.JMenu();
+        AgregarMateria = new javax.swing.JMenuItem();
         jRegistro = new javax.swing.JMenu();
         jSalir = new javax.swing.JMenu();
 
@@ -67,6 +68,15 @@ public class jFramePrincipal extends javax.swing.JFrame {
         jBarraPrincipal.add(jAlumno);
 
         jMateria.setText("Materia");
+
+        AgregarMateria.setText("Agregar Materia:");
+        AgregarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarMateriaActionPerformed(evt);
+            }
+        });
+        jMateria.add(AgregarMateria);
+
         jBarraPrincipal.add(jMateria);
 
         jRegistro.setText("Registro");
@@ -106,6 +116,13 @@ public class jFramePrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jmAgregarAlumMouseClicked
 
+    private void AgregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarMateriaActionPerformed
+        FormularioMateria agregar2 = new FormularioMateria();
+        agregar2.setVisible(true);
+        agregar2.setSize(450,350);
+        jdEscritorio.add(agregar2);
+    }//GEN-LAST:event_AgregarMateriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -144,6 +161,7 @@ public class jFramePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AgregarMateria;
     private javax.swing.JMenu jAlumno;
     private javax.swing.JMenuBar jBarraPrincipal;
     private javax.swing.JMenu jMateria;
