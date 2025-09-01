@@ -93,7 +93,7 @@ public class jFramePrincipal extends javax.swing.JFrame {
 
     private void jmAgregarAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAgregarAlumActionPerformed
         // TODO add your handling code here:
-        JinternalFrame agregar = new JinternalFrame();
+        FormularioAlumno agregar = new FormularioAlumno();
         agregar.setSize(450, 350);
         agregar.setVisible(true);
         jdEscritorio.add(agregar);

@@ -51,5 +51,12 @@ public class Alumno {
     
     }
     
+    
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "legajo=" + legajo + ", apellido=" + apellido + ", nombre=" + nombre + ", materia=" + materia + '}';
+    }
+    
     //Falta el metodo cantidadMaterias
 }
