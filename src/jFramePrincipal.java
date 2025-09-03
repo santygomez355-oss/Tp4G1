@@ -35,6 +35,7 @@ public class jFramePrincipal extends javax.swing.JFrame {
         jMateria = new javax.swing.JMenu();
         AgregarMateria = new javax.swing.JMenuItem();
         jRegistro = new javax.swing.JMenu();
+        jMenuFormInscripcion = new javax.swing.JMenuItem();
         jSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,7 +80,16 @@ public class jFramePrincipal extends javax.swing.JFrame {
 
         jBarraPrincipal.add(jMateria);
 
-        jRegistro.setText("Registro");
+        jRegistro.setText("Inscripcion");
+
+        jMenuFormInscripcion.setText("Formulario de Inscripcion");
+        jMenuFormInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuFormInscripcionActionPerformed(evt);
+            }
+        });
+        jRegistro.add(jMenuFormInscripcion);
+
         jBarraPrincipal.add(jRegistro);
 
         jSalir.setText("Salir");
@@ -123,6 +133,14 @@ public class jFramePrincipal extends javax.swing.JFrame {
         jdEscritorio.add(agregar2);
     }//GEN-LAST:event_AgregarMateriaActionPerformed
 
+    private void jMenuFormInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFormInscripcionActionPerformed
+        FormularioInscripcion agregar3 = new FormularioInscripcion();
+        agregar3.setVisible(true);
+        agregar3.setSize(450,350);
+        jdEscritorio.add(agregar3);
+
+    }//GEN-LAST:event_jMenuFormInscripcionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -165,6 +183,7 @@ public class jFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jAlumno;
     private javax.swing.JMenuBar jBarraPrincipal;
     private javax.swing.JMenu jMateria;
+    private javax.swing.JMenuItem jMenuFormInscripcion;
     private javax.swing.JMenu jRegistro;
     private javax.swing.JMenu jSalir;
     private javax.swing.JDesktopPane jdEscritorio;
