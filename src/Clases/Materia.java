@@ -43,5 +43,27 @@ public class Materia {
         this.anio = anio;
     }
     
-    
+    // toString para mostrar Materia y Año
+    @Override
+    public String toString() {
+        return "Materia: "+nombre + " (Año: " + anio + ")";
+    }
+
+    /* equals para comparar por idMateria si existe la materia */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }else if (!(o instanceof Materia)){
+            return false;
+        }
+        Materia materia = (Materia) o;
+        return idMateria == materia.idMateria;
+    }
+
+    /* Sobrescribir hashCode para que funcione bien en HashSet */
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(idMateria);
+    }
 }

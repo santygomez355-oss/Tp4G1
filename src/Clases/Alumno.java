@@ -15,7 +15,7 @@ public class Alumno {
     private String apellido;
     private String nombre;
     
-    private HashSet<Materia> materia;
+    private HashSet<Materia> materia = new HashSet<>();
 
     public Alumno(int legajo, String apellido, String nombre) {
         this.legajo = legajo;
@@ -48,15 +48,49 @@ public class Alumno {
     }
     
     public void agregarMateria(Materia m){
-    
+        if (materia.add(m)) { /*add intenta agregar materia controlado por HashSet*/
+            javax.swing.JOptionPane.showMessageDialog(
+                null,
+                "Inscripción exitosa en " + m.getNombre(),
+                "Alta materia",
+                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(
+                null,
+                "El alumno ya está inscripto en " + m.getNombre(),
+                "Inscripción duplicada",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
     }
     
     
-
+    /* toString para mostrar en ComboBox */
     @Override
     public String toString() {
-        return "Alumno{" + "legajo=" + legajo + ", apellido=" + apellido + ", nombre=" + nombre + ", materia=" + materia + '}';
+        return "(Legajo: " + legajo + ") Apellido: " + apellido + ", Nombre: " + nombre + ")"; 
+        //return "Alumno{" + "legajo=" + legajo + ", apellido=" + apellido + ", nombre=" + nombre + ", materia=" + materia + '}';
     }
     
-    //Falta el metodo cantidadMaterias
+    /* equals para comparar por legajo si existe el alumno */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }else if (!(o instanceof Alumno)){
+            return false;
+        }
+        Alumno alumno = (Alumno) o;
+        return legajo == alumno.legajo;
+    }
+    
+    /* Sobrescribir hashCode para que funcione bien en HashSet */
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(legajo);
+    }
+    
+    /* Metodo cantidad de Materias */
+    public int cantidadmaterias(){
+        return materia.size();
+    }
 }

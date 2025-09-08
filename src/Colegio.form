@@ -11,10 +11,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmAgregarAlum">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Formulario de Alumnos"/>
+                <Property name="text" type="java.lang.String" value="Agregar Alumnos"/>
+                <Property name="actionCommand" type="java.lang.String" value="Agregar Alumnos"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmAgregarAlumMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmAgregarAlumActionPerformed"/>
               </Events>
             </MenuItem>
@@ -25,12 +25,12 @@
             <Property name="text" type="java.lang.String" value="Materia"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="AgregarMateria">
+            <MenuItem class="javax.swing.JMenuItem" name="jmAgregarMateria">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar Materia:"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarMateriaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmAgregarMateriaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -40,12 +40,12 @@
             <Property name="text" type="java.lang.String" value="Inscripcion"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuFormInscripcion">
+            <MenuItem class="javax.swing.JMenuItem" name="jmFormInscripcion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Formulario de Inscripcion"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuFormInscripcionActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmFormInscripcionActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -54,12 +54,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmSalir">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salir"/>
+                <Property name="name" type="java.lang.String" value="jmSalir" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmSalirActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Colegio"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jBarraPrincipal"/>

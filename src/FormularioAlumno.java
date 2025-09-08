@@ -18,9 +18,9 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     /**
      * Creates new form NewJInternalFrame
      */
-    //no se si va ahi el HASHSET!!!
+    //no se si va ahi el HASHSET!!! ------> No, usamos el HashSet compartido de Colegio
     
-    public static final Set <Alumno> alumnos = new HashSet<>();
+    /*public static final Set <Alumno> alumnos = new HashSet<>();*/
     public FormularioAlumno() {
       //  public static final Set<Alumno> alumnos = new HashSet<>();
         initComponents();
@@ -38,31 +38,44 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbl_formularioAlumnos = new javax.swing.JLabel();
+        lbl_legajo = new javax.swing.JLabel();
+        lbl_apellido = new javax.swing.JLabel();
+        lbl_nombre = new javax.swing.JLabel();
         jTLegajo = new javax.swing.JTextField();
         jTApellido = new javax.swing.JTextField();
         jTNombre = new javax.swing.JTextField();
         jBGuardar = new javax.swing.JButton();
         jBNuevo = new javax.swing.JButton();
-        jBSalir = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
 
-        jLabel1.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel1.setText("Formulario de Alumnos");
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Agregar Alumno");
 
-        jLabel2.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel2.setText("LEGAJO:");
+        lbl_formularioAlumnos.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lbl_formularioAlumnos.setForeground(new java.awt.Color(0, 153, 204));
+        lbl_formularioAlumnos.setText("Formulario de Alumnos");
 
-        jLabel3.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel3.setText("APELLIDO:");
+        lbl_legajo.setForeground(new java.awt.Color(0, 153, 204));
+        lbl_legajo.setText("LEGAJO:");
+        lbl_legajo.setEnabled(false);
 
-        jLabel4.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel4.setText("NOMBRE:");
+        lbl_apellido.setForeground(new java.awt.Color(0, 153, 204));
+        lbl_apellido.setText("APELLIDO:");
+
+        lbl_nombre.setForeground(new java.awt.Color(0, 153, 204));
+        lbl_nombre.setText("NOMBRE:");
+
+        jTLegajo.setEnabled(false);
+
+        jTApellido.setEnabled(false);
+
+        jTNombre.setEnabled(false);
 
         jBGuardar.setForeground(new java.awt.Color(0, 153, 204));
         jBGuardar.setText("Guardar");
+        jBGuardar.setEnabled(false);
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
@@ -71,17 +84,20 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
         jBNuevo.setForeground(new java.awt.Color(0, 153, 204));
         jBNuevo.setText("Nuevo");
+        jBNuevo.setToolTipText("Toca para habiltar formulario");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBNuevoActionPerformed(evt);
             }
         });
 
-        jBSalir.setForeground(new java.awt.Color(0, 153, 204));
-        jBSalir.setText("Salir");
-        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+        jBCancelar.setForeground(new java.awt.Color(0, 153, 204));
+        jBCancelar.setText("Cancelar");
+        jBCancelar.setToolTipText("Limpiar Formulario");
+        jBCancelar.setEnabled(false);
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSalirActionPerformed(evt);
+                jBCancelarActionPerformed(evt);
             }
         });
 
@@ -94,11 +110,11 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbl_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(254, 254, 254))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_legajo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(211, 211, 211))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(143, 143, 143)
@@ -106,39 +122,40 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTApellido))
+                .addGap(85, 85, 85)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_formularioAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                        .addComponent(jTLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTApellido)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(56, 56, 56)
+                .addComponent(lbl_formularioAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_legajo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTLegajo))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTApellido))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTNombre))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jBCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,41 +172,45 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        
+        //Borra los campos de texto
+        limpiarFormulario();
        
-    }//GEN-LAST:event_jBSalirActionPerformed
+    }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         
         
          try{
-        int legajo= Integer.parseInt(jTLegajo.getText());
-        String apellido = jTApellido.getText();
-        String nombre = jTNombre.getText();
-        
-        //ME ASEGURO Q NO ESTEN EN BLANCO 
-        
-        
-        if(apellido.isEmpty()||nombre.isEmpty()){
-            JOptionPane.showMessageDialog(this, "El Apellido o el Nombre no pueden estar vacios", "Validación", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        Alumno alu= new Alumno(legajo,apellido,nombre);
-        
-        // COMO EL HASHSET EVITA DUPLICADOS , SI NO ESTA DUPLICADO SE AGREGA 
-        
-        if(!alumnos.add(alu)){
-            JOptionPane.showMessageDialog(this, "Ya existe un alumno con ese legajo", "Duplicado",JOptionPane.WARNING_MESSAGE);
-       
-            return;
-        }
-        
-        JOptionPane.showMessageDialog(this, "Alumno "+apellido+", "+nombre+" .Guardado Correctamente");
-        
-        
-        
+            int legajo= Integer.parseInt(jTLegajo.getText());
+            String apellido = jTApellido.getText();
+            String nombre = jTNombre.getText();
+
+            //ME ASEGURO Q NO ESTEN EN BLANCO 
+
+
+            if(apellido.isEmpty()||nombre.isEmpty()){
+                JOptionPane.showMessageDialog(this, "El Apellido o el Nombre no pueden estar vacios", "Validación", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            Alumno alu= new Alumno(legajo,apellido,nombre);
+
+            // COMO EL HASHSET EVITA DUPLICADOS , SI NO ESTA DUPLICADO SE AGREGA 
+
+            if(!Colegio.alumnos.add(alu)){
+                JOptionPane.showMessageDialog(this, "Ya existe un alumno con ese legajo", "Duplicado",JOptionPane.WARNING_MESSAGE);
+                // Si existia el legajo borra el formulario
+                limpiarFormulario();
+
+            }else{
+
+                JOptionPane.showMessageDialog(this, "Alumno "+apellido+", "+nombre+" .Guardado Correctamente");
+                // Una vez cargado el alumno limpia formulario y deshabilita los campos y los botones
+                limpiarFormulario();
+                deshabilitarFormulario();
+            }
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(this, "El legajo debe ser de caracter numerico", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -197,26 +218,51 @@ public class FormularioAlumno extends javax.swing.JInternalFrame {
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
       
-        //PONGO LOS JT EN BLANCO
-        
-        jTLegajo.setText("");
-        jTApellido.setText("");
-        jTNombre.setText("");
+        habilitarFormulario();
         
     }//GEN-LAST:event_jBNuevoActionPerformed
+    
+    
+    
+    
+    private void limpiarFormulario(){
+        //Limpia los campos de texto
+        jTApellido.setText("");
+        jTLegajo.setText("");
+        jTNombre.setText("");
+    }
+    
+    private void habilitarFormulario(){
+        //Habilita los campos de texto y los botones guardar y cancelar
+        jTLegajo.setEnabled(true);
+        jTApellido.setEnabled(true);
+        jTNombre.setEnabled(true);
+        jBGuardar.setEnabled(true);
+        jBCancelar.setEnabled(true);
+    }
+    
+    private void deshabilitarFormulario(){
+        jTLegajo.setEnabled(false);
+        jTApellido.setEnabled(false);
+        jTNombre.setEnabled(false);
+        jBGuardar.setEnabled(false);
+        jBCancelar.setEnabled(false);
+    }
 
-
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
-    private javax.swing.JButton jBSalir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTApellido;
     private javax.swing.JTextField jTLegajo;
     private javax.swing.JTextField jTNombre;
+    private javax.swing.JLabel lbl_apellido;
+    private javax.swing.JLabel lbl_formularioAlumnos;
+    private javax.swing.JLabel lbl_legajo;
+    private javax.swing.JLabel lbl_nombre;
     // End of variables declaration//GEN-END:variables
 }

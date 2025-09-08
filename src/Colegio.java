@@ -1,5 +1,9 @@
 
+import Clases.Alumno;
 import Clases.Materia;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -10,12 +14,17 @@ import Clases.Materia;
  *
  * @author arceb
  */
-public class jFramePrincipal extends javax.swing.JFrame {
+public class Colegio extends javax.swing.JFrame {
+    
+    /* Declarar los HashSet*/
+    public static Set<Alumno> alumnos = new HashSet<>();
+    public static Set<Materia> materias = new HashSet<>();
+        
 
     /**
      * Creates new form jFramePrincipal
      */
-    public jFramePrincipal() {
+    public Colegio() {
         initComponents();
     }
 
@@ -33,12 +42,14 @@ public class jFramePrincipal extends javax.swing.JFrame {
         jAlumno = new javax.swing.JMenu();
         jmAgregarAlum = new javax.swing.JMenuItem();
         jMateria = new javax.swing.JMenu();
-        AgregarMateria = new javax.swing.JMenuItem();
+        jmAgregarMateria = new javax.swing.JMenuItem();
         jRegistro = new javax.swing.JMenu();
-        jMenuFormInscripcion = new javax.swing.JMenuItem();
+        jmFormInscripcion = new javax.swing.JMenuItem();
         jSalir = new javax.swing.JMenu();
+        jmSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Colegio");
 
         javax.swing.GroupLayout jdEscritorioLayout = new javax.swing.GroupLayout(jdEscritorio);
         jdEscritorio.setLayout(jdEscritorioLayout);
@@ -53,12 +64,8 @@ public class jFramePrincipal extends javax.swing.JFrame {
 
         jAlumno.setText("Alumno");
 
-        jmAgregarAlum.setText("Formulario de Alumnos");
-        jmAgregarAlum.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jmAgregarAlumMouseClicked(evt);
-            }
-        });
+        jmAgregarAlum.setText("Agregar Alumnos");
+        jmAgregarAlum.setActionCommand("Agregar Alumnos");
         jmAgregarAlum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmAgregarAlumActionPerformed(evt);
@@ -70,29 +77,39 @@ public class jFramePrincipal extends javax.swing.JFrame {
 
         jMateria.setText("Materia");
 
-        AgregarMateria.setText("Agregar Materia:");
-        AgregarMateria.addActionListener(new java.awt.event.ActionListener() {
+        jmAgregarMateria.setText("Agregar Materia:");
+        jmAgregarMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarMateriaActionPerformed(evt);
+                jmAgregarMateriaActionPerformed(evt);
             }
         });
-        jMateria.add(AgregarMateria);
+        jMateria.add(jmAgregarMateria);
 
         jBarraPrincipal.add(jMateria);
 
         jRegistro.setText("Inscripcion");
 
-        jMenuFormInscripcion.setText("Formulario de Inscripcion");
-        jMenuFormInscripcion.addActionListener(new java.awt.event.ActionListener() {
+        jmFormInscripcion.setText("Formulario de Inscripcion");
+        jmFormInscripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuFormInscripcionActionPerformed(evt);
+                jmFormInscripcionActionPerformed(evt);
             }
         });
-        jRegistro.add(jMenuFormInscripcion);
+        jRegistro.add(jmFormInscripcion);
 
         jBarraPrincipal.add(jRegistro);
 
         jSalir.setText("Salir");
+
+        jmSalir.setText("Salir");
+        jmSalir.setName("jmSalir"); // NOI18N
+        jmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSalirActionPerformed(evt);
+            }
+        });
+        jSalir.add(jmSalir);
+
         jBarraPrincipal.add(jSalir);
 
         setJMenuBar(jBarraPrincipal);
@@ -119,27 +136,34 @@ public class jFramePrincipal extends javax.swing.JFrame {
         jdEscritorio.add(agregar);
     }//GEN-LAST:event_jmAgregarAlumActionPerformed
 
-    private void jmAgregarAlumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmAgregarAlumMouseClicked
-        // TODO add your handling code here:
-        
-        
-        
-    }//GEN-LAST:event_jmAgregarAlumMouseClicked
-
-    private void AgregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarMateriaActionPerformed
+    private void jmAgregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAgregarMateriaActionPerformed
         FormularioMateria agregar2 = new FormularioMateria();
         agregar2.setVisible(true);
         agregar2.setSize(450,350);
         jdEscritorio.add(agregar2);
-    }//GEN-LAST:event_AgregarMateriaActionPerformed
+    }//GEN-LAST:event_jmAgregarMateriaActionPerformed
 
-    private void jMenuFormInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFormInscripcionActionPerformed
+    private void jmFormInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormInscripcionActionPerformed
         FormularioInscripcion agregar3 = new FormularioInscripcion();
         agregar3.setVisible(true);
         agregar3.setSize(450,350);
         jdEscritorio.add(agregar3);
 
-    }//GEN-LAST:event_jMenuFormInscripcionActionPerformed
+    }//GEN-LAST:event_jmFormInscripcionActionPerformed
+
+    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
+        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "¿Está seguro que desea salir?",
+            "Confirmar salida",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jmSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,20 +182,21 @@ public class jFramePrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(jFramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Colegio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(jFramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Colegio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(jFramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Colegio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(jFramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Colegio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jFramePrincipal().setVisible(true);
+                new Colegio().setVisible(true);
             }
         });
         
@@ -179,14 +204,15 @@ public class jFramePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem AgregarMateria;
     private javax.swing.JMenu jAlumno;
     private javax.swing.JMenuBar jBarraPrincipal;
     private javax.swing.JMenu jMateria;
-    private javax.swing.JMenuItem jMenuFormInscripcion;
     private javax.swing.JMenu jRegistro;
     private javax.swing.JMenu jSalir;
     private javax.swing.JDesktopPane jdEscritorio;
     private javax.swing.JMenuItem jmAgregarAlum;
+    private javax.swing.JMenuItem jmAgregarMateria;
+    private javax.swing.JMenuItem jmFormInscripcion;
+    private javax.swing.JMenuItem jmSalir;
     // End of variables declaration//GEN-END:variables
 }
