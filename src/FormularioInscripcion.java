@@ -136,8 +136,8 @@ public class FormularioInscripcion extends javax.swing.JInternalFrame {
 
     private void btn_inscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inscribirActionPerformed
         // TODO add your handling code here:
-        Alumno alumno = (Alumno) cbo_materia.getSelectedItem();
-        Materia materia = (Materia) cbo_alumno.getSelectedItem();
+        Alumno alumno = (Alumno) cbo_alumno.getSelectedItem();
+        Materia materia = (Materia) cbo_materia.getSelectedItem();
 
         if (alumno == null || materia == null) {
             JOptionPane.showMessageDialog(
